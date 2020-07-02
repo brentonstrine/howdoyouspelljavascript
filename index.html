@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html><head>
+<style>
+/* layout styles */
+h1 {
+  text-align: center;
+  margin: 10rem;
+  white-space: nowrap;
+}
+
+.selected-spelling {
+  margin: 8rem 0;/* needs 0 horizontal so that margin + width doesn't exceed 100% */
+}
+
+.main-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 2em;
+}
+.column-side {
+  justify-self: center;
+  text-align: center;
+}
+.column-center {
+  justify-self: stretch;
+  align-self: center;
+}
+.selector-range {
+  width: 100%;
+}
+
+.selected-spelling {
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 5em;
+}
+
+/* decorative styling */
+body {
+  font-family: Arial, sans-serif;
+  padding: 0 4em;
+}
+.mobile-break {
+  display: inline;
+  content: "";
+}
+.column-side {
+  color: #555;
+}
+
+/* Small screen */
+@media screen and (max-width: 800px) {
+  body {
+    padding: 0 1em;
+  }
+  h1 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .main-row {
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: 1em;
+  }
+
+  .mobile-break {
+    display: block;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<h1>How do you spell <wbr/><br class="mobile-break"> <b class="javascript"></b>?</h1>
+<section class="spelling-selector">
+  <div class="row main-row">
+    <div class="column-side column-left">
+      Less likely <br class="mobile-break">
+      to be <br>
+      confused<br class="mobile-break">
+      with Java
+    </div>
+    <div class="column-center">
+      <input type="range" class="selector-range" step="1">  
+    </div>
+    <div class="column-side column-right">
+      More likely <br class="mobile-break">
+      to be <br>
+      confused<br class="mobile-break">
+      with Java
+    </div>
+  </div>
+  <div class="row">
+    <b class="selected-spelling of javascript"></b>
+  </div>
+</section>
+
+<script>
+//data
+const SPELLINGS = ["ECMAScript", "javascript", "Javascript", "JavaScript", "Java Script", "Java script"];
+
+//DOM
+let selectorRangeDOM = document.querySelector(".selector-range");
+let javscriptDOMs = document.querySelectorAll(".javascript");
+
+//helper fn
+let getRandom = function(max) {
+  //get a random integer between 1 and `max`
+  return Math.floor(Math.random() * (max) + 1);
+}
+
+//listeners
+selectorRangeDOM.addEventListener("input", function(){
+  let spelling = SPELLINGS[this.value];
+  let color = `rgb(${getRandom(254)}, ${getRandom(254)}, ${getRandom(254)})`;
+  javscriptDOMs.forEach(function(el){
+    el.innerText = spelling;//change word
+    el.style.color = color;//change color to random color
+  }); 
+});
+
+
+//init
+selectorRangeDOM.setAttribute("max", SPELLINGS.length-1);//set the range input's max attribute to the length of our list
+selectorRangeDOM.setAttribute("value", getRandom(SPELLINGS.length - 1));//pick a random spelling on load and select it
+selectorRangeDOM.dispatchEvent(new Event("input"));//manually trigger a change event to populate everything
+
+</script>
+<!--
+
+This page has 1 HTTP request and doesn't use any frameworks or libraries. The code is easy to read. A great exercise for the beginner would be to create a new version of this page in whatever framework or tools you're interested in learning.
+
+-->
+</body></html>
