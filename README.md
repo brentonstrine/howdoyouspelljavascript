@@ -2,4 +2,5 @@
 The debate rages on.
 
 see:
-https://brentonstrine.github.io/howdoyouspelljavascript/
+
+https://howdoyou.spelljavascript.com
