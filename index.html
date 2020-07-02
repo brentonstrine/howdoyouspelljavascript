@@ -9,6 +9,22 @@
 <title>how do you spell javascript?</title>
 <style>
 /* layout styles */
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+  
+.container {
+  justify-self: center;
+  align-self: center;
+}
+  
 h1 {
   text-align: center;
   margin: 10rem;
@@ -46,7 +62,6 @@ h1 {
 /* decorative styling */
 body {
   font-family: Arial, sans-serif;
-  padding: 0 4em;
 }
 .mobile-break {
   display: inline;
@@ -80,29 +95,31 @@ body {
 
 </head><body>
 
-<h1>How do you spell <wbr/><br class="mobile-break"> <b class="javascript"></b>?</h1>
-<section class="spelling-selector">
-  <div class="row main-row">
-    <div class="column-side column-left">
-      Less likely <br class="mobile-break">
-      to be <br>
-      confused<br class="mobile-break">
-      with Java
+<div class="container">
+  <h1>How do you spell <wbr/><br class="mobile-break"> <b class="javascript"></b>?</h1>
+  <section class="spelling-selector">
+    <div class="row main-row">
+      <div class="column-side column-left">
+        Less likely <br class="mobile-break">
+        to be <br>
+        confused<br class="mobile-break">
+        with Java
+      </div>
+      <div class="column-center">
+        <input type="range" class="selector-range" step="1">  
+      </div>
+      <div class="column-side column-right">
+        More likely <br class="mobile-break">
+        to be <br>
+        confused<br class="mobile-break">
+        with Java
+      </div>
     </div>
-    <div class="column-center">
-      <input type="range" class="selector-range" step="1">  
+    <div class="row">
+      <b class="selected-spelling of javascript"></b>
     </div>
-    <div class="column-side column-right">
-      More likely <br class="mobile-break">
-      to be <br>
-      confused<br class="mobile-break">
-      with Java
-    </div>
-  </div>
-  <div class="row">
-    <b class="selected-spelling of javascript"></b>
-  </div>
-</section>
+  </section>
+</div>
 
 <script>
 //data
