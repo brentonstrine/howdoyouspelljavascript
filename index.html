@@ -115,7 +115,7 @@ let getRandom = function(max) {
 //listeners
 selectorRangeDOM.addEventListener("input", function(){
   let spelling = SPELLINGS[this.value];
-  let color = `rgb(${getRandom(254)}, ${getRandom(254)}, ${getRandom(254)})`;
+  let color = `rgb(${getRandom(200)}, ${getRandom(200)}, ${getRandom(200)})`;
   javscriptDOMs.forEach(function(el){
     el.innerText = spelling;//change word
     el.style.color = color;//change color to random color
